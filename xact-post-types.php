@@ -34,7 +34,7 @@ function xact_post_types()
         'menu_icon' => 'dashicons-performance',
         'has_archive' => true,
         'rewrite' => array('slug' => 'works'),
-        'supports' => array('title', 'excerpt', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail'),
     ));
 }
 
