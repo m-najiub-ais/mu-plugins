@@ -53,7 +53,7 @@ function cmb2_project_metaboxes() {
                 'add_upload_files_text' => 'Add or Upload Images', // default: "Add or Upload Files"
                 'file_text' => 'File', // default: "File:"
                 'file_download_text' => 'Replacement', // default: "Download"
-            ),
+            )
         )
     );
     /**
@@ -82,6 +82,50 @@ function cmb2_project_metaboxes() {
     );
 }
 
+function cmb2_page_metaboxes() {
+
+	/**
+	 * Initiate the metabox
+	 */
+    
+	$cmb = new_cmb2_box(
+        array(
+            'id'            => 'page_logo',
+            'title'         => __( 'Page Logo', 'cmb2' ),
+            'object_types'  => array('page'), // Post type
+            'context'       => 'side', // where the fields will appear 'normal/side/advanced'
+            'priority'      => 'high',
+            'show_names'    => false, // Show field names on the left.
+        )
+    );
+
+    $cmb->add_field( array(
+        'name'    => 'Page Logo',
+        'desc'    => 'Upload your page logo if existed.',
+        'id'      => 'page_logo_image',
+        'type'    => 'file',
+        // Optional:
+        'options' => array(
+            'url' => false, // Hide the text input for the url
+        ),
+        'text' => array(
+            'add_upload_file_text' => 'Add Page Image' // Change upload button text. Default: "Add or Upload File"
+        ),
+        // query_args are passed to wp.media's library query.
+        'query_args' => array(
+            // Or only allow gif, jpg, or png images
+            'type' => array(
+                'image/gif',
+                'image/jpeg',
+                'image/png',
+                'application/svg+xml'
+            ),
+        ),
+        'preview_size' => 'large', // Image size to use when previewing in the admin.
+    ) );
+}
+
+add_action( 'cmb2_init', 'cmb2_page_metaboxes' );
 add_action( 'cmb2_init', 'cmb2_project_metaboxes' );
 
 ?>
