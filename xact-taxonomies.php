@@ -35,7 +35,7 @@ function xact_widgets_init() {
             'parent_item_colon' => 'Parent Category:',
             'edit_item' => 'Edit Category',
             'update_item' => 'Update Category',
-            'add_new_item' => 'Add New Project Category',
+            'add_new_item' => 'Add New Capability Category',
             'new_item_name' => 'New Category Name',
             'menu_name' => 'Categories',
         ),
