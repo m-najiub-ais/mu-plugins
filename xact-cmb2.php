@@ -125,7 +125,33 @@ function cmb2_page_metaboxes() {
     ) );
 }
 
+function cmb2_team_metaboxes() {
+
+	/**
+	 * Initiate the metabox
+	 */
+    
+	$cmb = new_cmb2_box(
+        array(
+            'id'            => 'position',
+            'title'         => __( 'Member Position', 'cmb2' ),
+            'object_types'  => array('team'), // Post type
+            'context'       => 'side', // where the fields will appear 'normal/side/advanced'
+            'priority'      => 'high',
+            'show_names'    => false, // Show field names on the left.
+        )
+    );
+
+    $cmb->add_field( array(
+        'name'    => 'Member Position',
+        'desc'    => 'add Member Position.',
+        'id'      => 'member_position',
+        'type'    => 'text',
+    ) );
+}
+
 add_action( 'cmb2_init', 'cmb2_page_metaboxes' );
 add_action( 'cmb2_init', 'cmb2_project_metaboxes' );
+add_action( 'cmb2_init', 'cmb2_team_metaboxes' );
 
 ?>
