@@ -21,6 +21,7 @@ add_action('init', 'register_shortcodes');
  */
 function xact_shortcode_capabilities($atts)
 {
+    
     global $wp_query,
         $post;
 
@@ -43,6 +44,7 @@ function xact_shortcode_capabilities($atts)
     if (!$loop->have_posts()) {
         return false;
     }
+    ob_start();
 ?>
     <section id="our-capabilities" class="container">
         <div class="row">
@@ -71,6 +73,7 @@ function xact_shortcode_capabilities($atts)
         </div>
     </section>
 <?php
+return ob_get_clean();
 }
 ?>
 
@@ -107,6 +110,7 @@ function xact_shortcode_work($atts)
     if (!$loop->have_posts()) {
         return false;
     }
+    ob_start();
 ?>
     <section id="our-work" class="pt-5 mt-5">
         <!-- section title -->
@@ -218,5 +222,6 @@ function xact_shortcode_work($atts)
         <!-- end section details -->
     </section>
 <?php
+    return ob_get_clean();
 }
 ?>
