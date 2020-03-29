@@ -89,7 +89,8 @@ function xact_shortcode_work($atts)
 
     $atts = shortcode_atts(array(
         'page' => '',
-        'slider-title' => ''
+        'slider-title' => '',
+        'title-class' => ''
     ), $atts);
 
     $loop = new WP_Query(array(
@@ -111,7 +112,7 @@ function xact_shortcode_work($atts)
         <!-- section title -->
         <div class="header">
             <div class="container">
-                <h2 class="gradient-work"><span class="font-light">Our</span> Work <?php echo $atts['slider-title'] ?></h2>
+                <h3 class="<?php echo ($atts['title-class']) ? $atts['title-class'] : 'gradient-work'; ?>"> <?php echo $atts['slider-title']  ?></h3>
             </div>
         </div>
         <!-- slider section -->
@@ -171,14 +172,13 @@ function xact_shortcode_work($atts)
                             <img src="<?php echo get_template_directory_uri() . '/images/close.svg' ?>" class="close-icon" alt="Phone icon">
                         </a>
                         <!-- end close icon -->
-
-                        <!-- loop throught project details -->
-                        <?php
-                        foreach ($project_details as $details) :
-                        ?>
-                            <div class="row pt-5 flex-md-row our_work_content_section">
-                                <div class="col-md-10">
-                                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <!-- loop throught project details -->
+                                <?php
+                                foreach ($project_details as $details) :
+                                ?>
+                                    <div class="row pt-5 flex-md-row our_work_content_section">
                                         <div class="col-md-6 pt-3">
                                             <?php
                                             echo $details['project_description']
@@ -191,7 +191,10 @@ function xact_shortcode_work($atts)
                                             <div class="col-md-6 pt-3 img">
                                                 <?php
                                                 foreach ($details['project_images'] as $attachment_id => $attachment_url) :
-                                                    echo wp_get_attachment_image($attachment_id, 'medium', "", ["class" => "our_work_img"]);
+                                                    // echo wp_get_attachment_image( $attachment_id, 'medium', "", ["class" => "our_work_img"]  );
+                                                ?>
+                                                    <img src="<?php echo wp_get_attachment_image_url($attachment_id, 'large'); ?>" alt="<?php the_title() ?>" class="our_work_img">
+                                                <?php
                                                 endforeach;
                                                 ?>
                                             </div>
@@ -199,18 +202,17 @@ function xact_shortcode_work($atts)
                                         endif; // check images check
                                         ?>
                                     </div>
-                                </div>
+                                <?php
+                                endforeach;
+                                ?>
                             </div>
+                        </div>
 
-                        <?php
-                        endforeach;
-                        ?>
                     </div>
 
             <?php
                 endif; // end check of data in custom field
             endwhile;
-            wp_reset_postdata();
             ?>
         </div>
         <!-- end section details -->
