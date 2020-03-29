@@ -57,7 +57,7 @@ function xact_shortcode_capabilities($atts)
                             <?php the_post_thumbnail('capabilities-thumb'); ?>
                         </div>
                         <div class="col-md-6 details">
-                            <h2><?php the_title(); ?></h2>
+                            <h3 class="font-bold"><?php the_title(); ?></h3>
                             <?php
                             the_content();
                             ?>
