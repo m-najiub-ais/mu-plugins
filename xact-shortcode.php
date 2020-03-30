@@ -21,7 +21,7 @@ add_action('init', 'register_shortcodes');
  */
 function xact_shortcode_capabilities($atts)
 {
-    
+
     global $wp_query,
         $post;
 
@@ -46,30 +46,30 @@ function xact_shortcode_capabilities($atts)
     }
     ob_start();
 ?>
-    <section id="our-capabilities" class="container">
-                <?php
-                while ($loop->have_posts()) :
+    <div class="capabilities-container">
+        <?php
+        while ($loop->have_posts()) :
 
-                    $loop->the_post();
-                ?>
-                    <div class="capability-container row pb-5">
-                        <div class="col-md-6 image">
-                            <?php the_post_thumbnail('capabilities-thumb'); ?>
-                        </div>
-                        <div class="col-md-6 details">
-                            <h3 class="font-bold"><?php the_title(); ?></h3>
-                            <?php
-                            the_content();
-                            ?>
-                        </div>
-                    </div>
-                <?php
-                endwhile;
-                wp_reset_postdata();
-                ?>
-    </section>
+            $loop->the_post();
+        ?>
+            <div class="capability-container row pb-5">
+                <div class="col-md-6 image">
+                    <?php the_post_thumbnail('capabilities-thumb'); ?>
+                </div>
+                <div class="col-md-6 details">
+                    <h3 class="font-bold"><?php the_title(); ?></h3>
+                    <?php
+                    the_content();
+                    ?>
+                </div>
+            </div>
+        <?php
+        endwhile;
+        wp_reset_postdata();
+        ?>
+    </div>
 <?php
-return ob_get_clean();
+    return ob_get_clean();
 }
 ?>
 
