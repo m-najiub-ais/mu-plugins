@@ -47,8 +47,6 @@ function xact_shortcode_capabilities($atts)
     ob_start();
 ?>
     <section id="our-capabilities" class="container">
-        <div class="row">
-            <div class="col-lg-10 col-md-12">
                 <?php
                 while ($loop->have_posts()) :
 
@@ -69,8 +67,6 @@ function xact_shortcode_capabilities($atts)
                 endwhile;
                 wp_reset_postdata();
                 ?>
-            </div>
-        </div>
     </section>
 <?php
 return ob_get_clean();
