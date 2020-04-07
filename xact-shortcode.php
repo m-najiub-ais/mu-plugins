@@ -71,9 +71,6 @@ function xact_shortcode_capabilities($atts)
 <?php
     return ob_get_clean();
 }
-?>
-
-<?php
 /**
  * work Shortcode Callback
  * 
@@ -110,11 +107,17 @@ function xact_shortcode_work($atts)
 ?>
     <section id="our-work" class="pt-5 mt-5">
         <!-- section title -->
-        <div class="header">
-            <div class="container">
-                <h3 class="<?php echo ($atts['title-class']) ? $atts['title-class'] : 'gradient-work'; ?>"> <?php echo $atts['slider-title']  ?></h3>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="<?php echo ($atts['title-class']) ? $atts['title-class'] : 'title'; ?>">
+                        <?php echo $atts['slider-title']  ?>
+                    </h2>
+                </div>
             </div>
         </div>
+
         <!-- slider section -->
         <div class="slider pt-5">
             <div class="our_work_slider">
@@ -220,4 +223,3 @@ function xact_shortcode_work($atts)
 <?php
     return ob_get_clean();
 }
-?>

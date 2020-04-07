@@ -1,8 +1,9 @@
-<?php 
-function xact_widgets_init() {
-	
-	// register custom categories for work
-    register_taxonomy( 'work_categories', array('work'), array(
+<?php
+function xact_widgets_init()
+{
+
+    // register custom categories for work
+    register_taxonomy('work_categories', array('work'), array(
         'hierarchical' => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
         'labels' => array(
             'name' => 'Categories',
@@ -20,11 +21,11 @@ function xact_widgets_init() {
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'projects_categories' )
+        'rewrite' => array('slug' => 'projects_categories')
     ));
 
     // register custom categories capabilities
-    register_taxonomy( 'capabilities_categories', array('capabilities'), array(
+    register_taxonomy('capabilities_categories', array('capabilities'), array(
         'hierarchical' => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
         'labels' => array(
             'name' => 'Categories',
@@ -42,10 +43,8 @@ function xact_widgets_init() {
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'capabilities_categories' )
+        'rewrite' => array('slug' => 'capabilities_categories')
     ));
 }
 
-
-add_action( 'widgets_init', 'xact_widgets_init' );
-?>
+add_action('widgets_init', 'xact_widgets_init');

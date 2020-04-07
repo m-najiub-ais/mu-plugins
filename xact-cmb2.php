@@ -1,18 +1,20 @@
 <?php
+
 /**
  * Define the metabox and fields configurations for work post type using cmb2.
-*/
+ */
 
-function cmb2_project_metaboxes() {
+function cmb2_project_metaboxes()
+{
 
-	/**
-	 * Initiate the metabox
-	 */
-    
-	$cmb = new_cmb2_box(
+    /**
+     * Initiate the metabox
+     */
+
+    $cmb = new_cmb2_box(
         array(
             'id'            => 'project_details',
-            'title'         => __( 'Project Details', 'cmb2' ),
+            'title'         => __('Project Details', 'cmb2'),
             'object_types'  => array('work'), // Post type
             'context'       => 'advanced', // where the fields will appear 'normal/side/advanced'
             'priority'      => 'high',
@@ -28,11 +30,11 @@ function cmb2_project_metaboxes() {
         array(
             'id'          => 'work_repeat_group',
             'type'        => 'group',
-            'description' => __( 'Add Project Details ', 'cmb2' ),
+            'description' => __('Add Project Details ', 'cmb2'),
             'options'     => array(
-                'group_title'       => __( 'Entry Details {#}', 'cmb2' ), // since version 1.1.4, {#} gets replaced by row number
-                'add_button'        => __( 'Add Another Entry', 'cmb2' ),
-                'remove_button'     => __( 'Remove Entry', 'cmb2' ),
+                'group_title'       => __('Entry Details {#}', 'cmb2'), // since version 1.1.4, {#} gets replaced by row number
+                'add_button'        => __('Add Another Entry', 'cmb2'),
+                'remove_button'     => __('Remove Entry', 'cmb2'),
                 'sortable'          => true,
             )
         )
@@ -40,14 +42,15 @@ function cmb2_project_metaboxes() {
     /*
 	 * add image field to group field
     */
-    $cmb->add_group_field( $group_field_id,
+    $cmb->add_group_field(
+        $group_field_id,
         array(
-            'name'           => __( 'Images', 'cmb2' ),
-            'desc'           => __( 'Upload Images "optional"', 'cmb2' ),
+            'name'           => __('Images', 'cmb2'),
+            'desc'           => __('Upload Images "optional"', 'cmb2'),
             'id'             => 'project_images',
             'type'           => 'file_list',
-            'preview_size'   => array( 200, 200 ), // Default: array( 50, 50 )
-            'query_args'     => array( 'type' => 'image' ), // Only images attachment
+            'preview_size'   => array(200, 200), // Default: array( 50, 50 )
+            'query_args'     => array('type' => 'image'), // Only images attachment
             // Optional, override default text strings
             'text'           => array(
                 'add_upload_files_text' => 'Add or Upload Images', // default: "Add or Upload Files"
@@ -57,9 +60,10 @@ function cmb2_project_metaboxes() {
         )
     );
     /**
-	 * add wysiwyg field to group field
-	 */
-    $cmb->add_group_field( $group_field_id,
+     * add wysiwyg field to group field
+     */
+    $cmb->add_group_field(
+        $group_field_id,
         array(
             'name'    => 'Entry Description ',
             'desc'    => 'field description (optional)',
@@ -78,20 +82,21 @@ function cmb2_project_metaboxes() {
                 'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
                 'quicktags' => true // load Quicktags, can be used to pass settings directly to Quicktags using an array()
             ),
-        ),
+        )
     );
 }
 
-function cmb2_page_metaboxes() {
+function cmb2_page_metaboxes()
+{
 
-	/**
-	 * Initiate the metabox
-	 */
-    
-	$cmb = new_cmb2_box(
+    /**
+     * Initiate the metabox
+     */
+
+    $cmb = new_cmb2_box(
         array(
             'id'            => 'page_logo',
-            'title'         => __( 'Page Logo', 'cmb2' ),
+            'title'         => __('Page Logo', 'cmb2'),
             'object_types'  => array('page'), // Post type
             'context'       => 'side', // where the fields will appear 'normal/side/advanced'
             'priority'      => 'high',
@@ -99,7 +104,7 @@ function cmb2_page_metaboxes() {
         )
     );
 
-    $cmb->add_field( array(
+    $cmb->add_field(array(
         'name'    => 'Page Logo',
         'desc'    => 'Upload your page logo if existed.',
         'id'      => 'page_logo_image',
@@ -122,19 +127,20 @@ function cmb2_page_metaboxes() {
             ),
         ),
         'preview_size' => 'large', // Image size to use when previewing in the admin.
-    ) );
+    ));
 }
 
-function cmb2_team_metaboxes() {
+function cmb2_team_metaboxes()
+{
 
-	/**
-	 * Initiate the metabox
-	 */
-    
-	$cmb = new_cmb2_box(
+    /**
+     * Initiate the metabox
+     */
+
+    $cmb = new_cmb2_box(
         array(
             'id'            => 'position',
-            'title'         => __( 'Member Position', 'cmb2' ),
+            'title'         => __('Member Position', 'cmb2'),
             'object_types'  => array('team'), // Post type
             'context'       => 'side', // where the fields will appear 'normal/side/advanced'
             'priority'      => 'high',
@@ -142,16 +148,14 @@ function cmb2_team_metaboxes() {
         )
     );
 
-    $cmb->add_field( array(
+    $cmb->add_field(array(
         'name'    => 'Member Position',
         'desc'    => 'add Member Position.',
         'id'      => 'member_position',
         'type'    => 'text',
-    ) );
+    ));
 }
 
-add_action( 'cmb2_init', 'cmb2_page_metaboxes' );
-add_action( 'cmb2_init', 'cmb2_project_metaboxes' );
-add_action( 'cmb2_init', 'cmb2_team_metaboxes' );
-
-?>
+add_action('cmb2_init', 'cmb2_page_metaboxes');
+add_action('cmb2_init', 'cmb2_project_metaboxes');
+add_action('cmb2_init', 'cmb2_team_metaboxes');

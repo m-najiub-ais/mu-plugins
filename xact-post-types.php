@@ -69,4 +69,3 @@ function xact_post_types()
 }
 
 add_action("init", "xact_post_types");
-?>
