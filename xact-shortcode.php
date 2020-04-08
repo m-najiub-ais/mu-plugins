@@ -137,7 +137,7 @@ function xact_shortcode_work($atts)
                                                             }
                                                             ?>" alt="<?php the_title(); ?>" id="1">
                             <div class="img_text" id="<?php echo 'img_text_' . get_the_ID() ?>">
-                                <h2><?php the_title(); ?></h2>
+                                <h3 class="font-bold"><?php the_title(); ?></h3>
                                 <p>
                                     <?php
                                     if (has_excerpt(get_the_id())) {
